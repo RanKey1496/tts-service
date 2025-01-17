@@ -5,6 +5,9 @@ load_dotenv()
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
+def get_nats_url():
+    return os.environ.get("NATS_URL")
+
 def get_model_path():
     return os.environ.get("MODEL_PATH")
 

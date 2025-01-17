@@ -5,7 +5,7 @@ import json
 from services.coqui_tts import TTS
 from services.s3 import S3
 from services.nat import Broker
-from config import (get_model_path, get_config_path, get_s3_region,
+from config import (get_nats_url, get_model_path, get_config_path, get_s3_region,
     get_s3_bucket, get_s3_key, get_s3_secret)
 
 class Main:
@@ -30,7 +30,7 @@ class Main:
         await self._nats.publish("job.tts.completed", data)
         
     async def run(self):
-        await self._nats.connect("nats://127.0.0.1:4222")
+        await self._nats.connect(get_nats_url())
         await self._nats.subscribe("job.tts.created", self.job_tts_created_handler)
         while True:
             await asyncio.sleep(1)

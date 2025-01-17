@@ -7,7 +7,7 @@ ENTRYPOINT ["sleep 10"]
 
 FROM python:3.9 as base
 WORKDIR /app
-COPY --from=models /models/XTTS-v2-argentinian-spanish /app/models/XTTS-v2-argentinian-spanish
+COPY --from=models /models/XTTS-v2-argentinian-spanish .
 RUN apt update
 RUN apt-get install -y libsndfile1
 COPY ./requirements.txt /app/requirements.txt

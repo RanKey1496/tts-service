@@ -21,6 +21,7 @@ class TTS:
         """
         
         print_info("Loading TTS model...")
+        torch.backends.nnpack.enabled = False
         config = XttsConfig()
         config.load_json(config_path)
         

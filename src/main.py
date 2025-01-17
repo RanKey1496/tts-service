@@ -20,7 +20,7 @@ class Main:
         data = json.loads(msg.data.decode())
         output = self._tts.synthesize(data['text'], f"speakers/{data['speaker']}.wav")
         filename = output.split('\\')[-1]
-        key = f"audio/{filename}"
+        key = f"audio/{data['id']}/{filename}"
         self._s3.upload_file(output, get_s3_bucket(), key)
         os.remove(output)
         await self.job_tts_completed_publisher(data['id'], key)

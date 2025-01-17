@@ -1,0 +1,5 @@
+TTS
+termcolor
+nats-py
+boto3
+python-dotenv
